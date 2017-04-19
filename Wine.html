@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Wine</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="app.css" />
+    <script src="wineScript.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row text-center">
+            <h3>Make your own Wine</h3>
+        </div>
+        <div class="row">
+            <div class="container">
+                <div class="button-group">
+                    <div class="btn btn-default" data-starCount="1">1 Star</div>
+                    <div class="btn btn-default" data-starCount="2">2 Star</div>
+                    <div class="btn btn-default" data-starCount="3">3 Star</div>
+                    <div class="btn btn-default" data-starCount="4">4 Star</div>
+                    <div class="btn btn-default" data-starCount="5">5 Star</div>
+                    <div class="btn btn-default" data-starCount="6">6 Star</div>
+                    <div class="btn btn-default" data-starCount="7">7 Star</div>
+                    <div class="btn btn-default" data-starCount="8">8 Star</div>
+                    <div class="btn btn-default" data-starCount="9">9 Star</div>
+                    <div class="btn btn-default" data-starCount="10">10 Star</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 sliders">
+
+                </div>
+                <div class="col-md-4">
+                    <div style="padding:25px 15px;">
+                        <img height="250" class="pull-right" src="http://www.winescenepalmbeach.com/wp-content/uploads/2016/06/grapes-bottle-and-glass-of-red-wine.jpg"
+                            alt="Wine Picture">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <template id="slider-template">
+        <div class="cnt col-md-2">
+            <div class="row headerItem text-center ">
+                <h3 class="headerText">
+                </h3>
+            </div>
+            <div class="row text-center  sliderContainer"></div>
+            <div class="row footerItem text-center ">
+                <h3 class=" footerText"> </h3>
+            </div>
+        </div>
+    </template>
+</body>
+
+</html>
