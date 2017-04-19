@@ -1,25 +1,32 @@
+//import {featureSet} from "featureSet.js"
 (function () {
     var featureSet = [];
     var featureData = {};
     var sliders = [];
     var container;
+    var friendlyName = ['fixed acidity','volatile acidity','citric acid','residual sugar','chlorides','free sulfur dioxide','density','pH','total sulfur dioxide','sulphates','alcohol'];
+    var initialData = [7.4 , 0.7 , 0.03 , 1.9 , 0.076 , 11 , 34 , 0.9978 , 3.51 , 0.56 , 9.4];
+    var minData = [4.6, 0.12 , 0, 0.9 , 0.012 , 1 , 6 , 0.99007, 2.74 , 0.33 , 8.4];
+    var maxData = [15.9, 1.58, 1, 15.5, 0.611 , 72, 289,1.00369, 4.01 , 2, 14.9];
 
-    for (var i = 0; i < 13; i++) {
+    for (var i = 0; i < 11; i++) {
         featureSet.push({
-            min: 0,
-            max: 1,
+            min: minData[i],
+            max: maxData[i],
             step: 0.0001,
             name: 'alchohol' + i,
-            friendlyName: 'Alchohol' + i,
+            friendlyName: friendlyName[i],
             unit: Math.random() > 0.5 ? 'ml' : '%',
             initialValue: 0.4 + (i / 100)
         });
 
-        featureData["alchohol" + i] = 0.4 + (i / 100);
+        featureData["alchohol" + i] = initialData[i];
 
     }
 
     document.addEventListener('DOMContentLoaded', function () {
+        $('#input-1').rating({min: 0, max: 10, step: 0.1, stars: 10});
+        $('#input-2').rating({displayOnly: true, step: 0.1, stars: 10});
         container = document.querySelector('.sliders');
         createFatureEditors();
     });
@@ -27,6 +34,10 @@
     var logToConsole = debounce(function () {
         console.log(featureData);
     }, 2000, false)
+
+    $('#input-1').on('rating.loading', function(event, value, caption) {
+    console.log(value);
+    });
 
     function createFatureEditors() {
         var sliderContainerTemplate = document.body.querySelector('#slider-template');
