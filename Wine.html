@@ -32,12 +32,13 @@
 <body>
     <div class="container">
         <div class="row text-center">
-            <h3 style="color:white">Make your own Wine</h3>
+            
+            <h2 style="color:#4c0404"><img src="img/wine-512.png" height="50" width="50">Make Your Own Wine</h2>
         </div>
         <div class="row">
             <div class="container">
-                <label for="input-1" style="color:white;" class="control-label">Which quality wine you want ? </label>
-                <input id="input-1" name="input-1" value="4.3" class="rating-loading">
+                <!--<label for="rateQuality" style="color:white;" class="control-label"></label>-->
+                <input id="rateQuality" name="rateQuality" value="50" class="rating-loading">
             </div>
             </br>
             <div class="row">
@@ -45,9 +46,9 @@
 
                 </div>
                 <div class="col-lg-4 col-xs-6">
-                    <div class="pull-right">
-                        <label for="input-2" style="color:white;" class="control-label">Estimated Quality</label>
-                        <input id="input-2" name="input-2" value="3.2" class="rating-loading" data-size="xs">
+                    <div class="text-center">
+                        <label for="estimateQuality" style="color:white;" class="control-label">Estimated Quality</label>
+                        <input id="estimateQuality" name="estimateQuality" value="3.2" class="rating-loading" data-size="xs">
                     </div>
                     <!--<div style="padding:25px 8px;">
                         <img height="250" class="pull-right" src="http://www.winescenepalmbeach.com/wp-content/uploads/2016/06/grapes-bottle-and-glass-of-red-wine.jpg"
@@ -56,10 +57,7 @@
                 </div>
             </div>
         </div>
-
-
     </div>
-
 
 
     <template id="slider-template">

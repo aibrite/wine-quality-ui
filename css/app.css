@@ -1,7 +1,9 @@
 
      body {
-        background: url(http://www.artsfon.com/pic/201502/2560x1600/artsfon.com-55149.jpg) no-repeat center;
-        background-size: 100% 100%;
+        /*http://www.artsfon.com/pic/201502/2560x1600/artsfon.com-55149.jpg*/
+        background-color: black !important;
+        background: black url("../img/wine.jpg") no-repeat center;
+        background-size:  auto 100%;
         background-attachment: fixed;
     }
         h3 {

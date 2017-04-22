@@ -542,16 +542,16 @@
         showClear: true,
         showCaption: true,
         starCaptionClasses: {
-            0.5: 'label label-danger',
-            1: 'label label-danger',
-            1.5: 'label label-warning',
-            2: 'label label-warning',
-            2.5: 'label label-info',
-            3: 'label label-info',
-            3.5: 'label label-primary',
-            4: 'label label-primary',
-            4.5: 'label label-success',
-            5: 'label label-success'
+            // 10: 'label label-danger',
+            // 20: 'label label-danger',
+            // 30: 'label label-warning',
+            // 40: 'label label-warning',
+            // 50: 'label label-info',
+            // 60: 'label label-info',
+            // 70: 'label label-primary',
+            // 80: 'label label-primary',
+            // 90: 'label label-success',
+            // 100: 'label label-success'
         },
         clearButton: '<i class="glyphicon glyphicon-minus-sign"></i>',
         clearButtonBaseClass: 'clear-rating',
@@ -568,21 +568,17 @@
     };
 
     $.fn.ratingLocales.en = {
-        defaultCaption: '{rating} Stars',
+        defaultCaption: '{rating} %',
         starCaptions: {
-            0.5: 'Half Star',
-            1: 'One Star',
-            1.5: 'One & Half Star',
-            2: 'Two Stars',
-            2.5: 'Two & Half Stars',
-            3: 'Three Stars',
-            3.5: 'Three & Half Stars',
-            4: 'Four Stars',
-            4.5: 'Four & Half Stars',
-            5: 'Five Stars'
+            0: 'Very Poor',
+            20: 'Poor - 20%', 
+            40: 'Ok - 40%', 
+            60: 'Good - 60%', 
+            80: 'Very Good - 80%',
+            100: 'Perfect - 100%'
         },
         clearButtonTitle: 'Clear',
-        clearCaption: 'Not Rated'
+        clearCaption: 'Which quality wine you want ?'
     };
 
     $.fn.rating.Constructor = Rating;
