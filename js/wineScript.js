@@ -55,7 +55,7 @@
         max: 72,
         step: 0.0001,
         name: 'alcohol5',
-        friendlyName: 'free sulfur dioxide',
+        friendlyName: 'free sulfur dioxid',
         unit: '%',
         initialValue: 11
     },
@@ -126,12 +126,13 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         $('#rateQuality').rating({ min: 0, max: 100, step: 1, stars: 5 });
-        $('#estimateQuality').rating({ displayOnly: true, step: 0.1, stars: 5 });
+        $('#estimateQuality').rating({ displayOnly: true,min: 0, max: 10, step: 0.1, stars: 5 });
         container = document.querySelector('.sliders');
         createFatureEditors();
         $("#rateQuality").rating().on("rating.clear", function (event) {
             console.log("Your rating is reset")
         }).on("rating.change", function (event, value, caption) {
+            $("#estimateQuality").rating("update", value/10);
             console.log("You rated: " + value + " = " + $(caption).text());
             rate = value;
         });
@@ -145,7 +146,8 @@
             console.log('Posting...')
         }).done(function (data, status) {
             console.log(data)
-            alert("Selected Wine Quality: " + data.prediction);
+            //alert("Selected Wine Quality: " + data.prediction);
+            $("#estimateQuality").rating("update", data.prediction);
         }).fail(function (err) {
             console.log(err)
             alert('Error. Please try again.')
