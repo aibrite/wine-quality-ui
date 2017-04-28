@@ -5,94 +5,105 @@
     var sliders = [];
     var container;
     var rate;
-    var featureSet = [{min: 4.6,
-            max: 15.9,
-            step: 0.0001,
-            name: 'alcohol0' ,
-            friendlyName: 'fixed acidity',
-            unit:  'ml',
-            initialValue: 7.4
-        },
-        {min: 0.12,
-            max: 1.58,
-            step: 0.0001,
-            name: 'alcohol1' ,
-            friendlyName: 'volatile acidity' ,
-            unit:  'ml',
-            initialValue: 0.7
-        },
-        {min: 0,
-            max: 1,
-            step: 0.0001,
-            name: 'alcohol2' ,
-            friendlyName: 'citric acid',
-            unit:  'ml',
-            initialValue: 0.03
-        },
-        {min: 0.9,
-            max: 15.5,
-            step: 0.0001,
-            name: 'alcohol3' ,
-            friendlyName: 'residual sugar',
-            unit:  'ml',
-            initialValue: 1.9
-        },
-        {min: 0.012,
-            max: 0.611,
-            step: 0.0001,
-            name: 'alcohol4' ,
-            friendlyName: 'chlorides',
-            unit:  '%',
-            initialValue: 0.076
-        },
-        {min: 1,
-            max: 72,
-            step: 0.0001,
-            name: 'alcohol5' ,
-            friendlyName: 'free sulfur dioxide',
-            unit:  '%',
-            initialValue: 11
-        },
-        {min: 6,
-            max: 289,
-            step: 0.0001,
-            name: 'alcohol6' ,
-            friendlyName: 'density',
-            unit:  '%',
-            initialValue: 34
-        },
-        {min: 0.99007,
-            max: 1.00369,
-            step: 0.0001,
-            name: 'alcohol7' ,
-            friendlyName: 'pH',
-            unit:  'ml',
-            initialValue: 0.9978
-        },
-        {min: 2.74,
-            max: 4.01,
-            step: 0.01,
-            name: 'alcohol8' ,
-            friendlyName: 'total sulfur dioxid',
-            unit:  '%',
-            initialValue: 3.51
-        },
-        {min: 0.33,
-            max:2,
-            step: 0.0001,
-            name: 'alcohol9' ,
-            friendlyName: 'sulphates',
-            unit:  'ml',
-            initialValue: 0.56
-        },
-        {min: 8.4,
-            max:21,
-            step: 0.0001,
-            name: 'alcohol10' ,
-            friendlyName: 'alcohol',
-            unit:  '%',
-            initialValue: 9.4
-        }]
+    var featureSet = [{
+        min: 4.6,
+        max: 15.9,
+        step: 0.0001,
+        name: 'alcohol0',
+        friendlyName: 'fixed acidity',
+        unit: 'ml',
+        initialValue: 7.4
+    },
+    {
+        min: 0.12,
+        max: 1.58,
+        step: 0.0001,
+        name: 'alcohol1',
+        friendlyName: 'volatile acidity',
+        unit: 'ml',
+        initialValue: 0.7
+    },
+    {
+        min: 0,
+        max: 1,
+        step: 0.0001,
+        name: 'alcohol2',
+        friendlyName: 'citric acid',
+        unit: 'ml',
+        initialValue: 0.03
+    },
+    {
+        min: 0.9,
+        max: 15.5,
+        step: 0.0001,
+        name: 'alcohol3',
+        friendlyName: 'residual sugar',
+        unit: 'ml',
+        initialValue: 1.9
+    },
+    {
+        min: 0.012,
+        max: 0.611,
+        step: 0.0001,
+        name: 'alcohol4',
+        friendlyName: 'chlorides',
+        unit: '%',
+        initialValue: 0.076
+    },
+    {
+        min: 1,
+        max: 72,
+        step: 0.0001,
+        name: 'alcohol5',
+        friendlyName: 'free sulfur dioxide',
+        unit: '%',
+        initialValue: 11
+    },
+    {
+        min: 6,
+        max: 289,
+        step: 0.0001,
+        name: 'alcohol6',
+        friendlyName: 'density',
+        unit: '%',
+        initialValue: 34
+    },
+    {
+        min: 0.99007,
+        max: 1.00369,
+        step: 0.0001,
+        name: 'alcohol7',
+        friendlyName: 'pH',
+        unit: 'ml',
+        initialValue: 0.9978
+    },
+    {
+        min: 2.74,
+        max: 4.01,
+        step: 0.01,
+        name: 'alcohol8',
+        friendlyName: 'total sulfur dioxid',
+        unit: '%',
+        initialValue: 3.51
+    },
+    {
+        min: 0.33,
+        max: 2,
+        step: 0.0001,
+        name: 'alcohol9',
+        friendlyName: 'sulphates',
+        unit: 'ml',
+        initialValue: 0.56
+    },
+    {
+        min: 8.4,
+        max: 21,
+        step: 0.0001,
+        name: 'alcohol10',
+        friendlyName: 'alcohol',
+        unit: '%',
+        initialValue: 9.4
+    }]
     // var friendlyName = ['fixed acidity','volatile acidity','citric acid','residual sugar','chlorides','free sulfur dioxide','density','pH','total sulfur dioxid','sulphates','alcohol'];
     // var initialData = [7.4 , 0.7 , 0.03 , 1.9 , 0.076 , 11 , 34 , 0.9978 , 3.51 , 0.56 , 9.4];
     // var minData = [4.6, 0.12 , 0, 0.9 , 0.012 , 1 , 6 , 0.99007, 2.74 , 0.33 , 8.4];
@@ -128,7 +139,18 @@
 
     var logToConsole = debounce(function () {
         console.log(featureData);
-    }, 2000, false) 
+
+        //Utku: JQuery Server Call 
+        $.post('https://wine-quality.herokuapp.com/predict', featureData, function (data, status) {
+            console.log('Posting...')
+        }).done(function (data, status) {
+            console.log(data)
+            alert("Selected Wine Quality: " + data.prediction);
+        }).fail(function (err) {
+            console.log(err)
+            alert('Error. Please try again.')
+        })
+    }, 2000, false)
 
     function createFatureEditors() {
         var sliderContainerTemplate = document.body.querySelector('#slider-template');
